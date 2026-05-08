@@ -1,0 +1,93 @@
+Metadata-Version: 2.4
+Name: xalen
+Version: 0.1.0
+Summary: XALEN SDK — AI Infrastructure for the Faith Economy
+Home-page: https://github.com/xalen-ai/xalen-python
+Author: XALEN Technology Pvt Ltd
+Author-email: sdk@xalen.ai
+License: MIT
+Project-URL: Documentation, https://xalen.io/docs
+Project-URL: Source, https://github.com/xalen-ai/xalen-python
+Project-URL: Issues, https://github.com/xalen-ai/xalen-python/issues
+Keywords: xalen ai api faith-tech astrology inference
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Topic :: Software Development :: Libraries
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: openai>=1.0.0
+Dynamic: author
+Dynamic: author-email
+Dynamic: classifier
+Dynamic: description
+Dynamic: description-content-type
+Dynamic: home-page
+Dynamic: keywords
+Dynamic: license
+Dynamic: license-file
+Dynamic: project-url
+Dynamic: requires-dist
+Dynamic: requires-python
+Dynamic: summary
+
+# XALEN Python SDK
+
+The official Python SDK for the XALEN AI API. Drop-in replacement for the OpenAI SDK — just change the base URL.
+
+## Installation
+
+```bash
+pip install xalen
+```
+
+## Quick Start
+
+```python
+from xalen import XALEN
+
+client = XALEN(api_key="xln_live_your_key_here")
+
+response = client.chat.completions.create(
+    model="vedika-standard",
+    messages=[
+        {"role": "user", "content": "What is Shakata Yoga?"}
+    ]
+)
+print(response.choices[0].message.content)
+```
+
+## Async Usage
+
+```python
+from xalen import AsyncXALEN
+
+client = AsyncXALEN()
+
+response = await client.chat.completions.create(
+    model="vedika-fast",
+    messages=[{"role": "user", "content": "Analyze my birth chart"}]
+)
+```
+
+## Environment Variable
+
+Set `XALEN_API_KEY` to avoid passing the key explicitly:
+
+```bash
+export XALEN_API_KEY=xln_live_your_key_here
+```
+
+## API Base URL
+
+Default: `https://api.xalen.io/v1`
+
+## Documentation
+
+Full API docs: [xalen.io/docs](https://xalen.io/docs)
+
+## License
+
+MIT
