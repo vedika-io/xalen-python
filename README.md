@@ -1,57 +1,24 @@
-# XALEN Python SDK
+# Xalen Python SDK (legacy snapshot)
 
-The official Python SDK for the XALEN AI API. Drop-in replacement for the OpenAI SDK — just change the base URL.
+This repository is retained as historical source for an early Xalen API client. It is not the current Xalen Python SDK and should not be used for new integrations.
 
-## Installation
+## Package-name warning
 
-```bash
-pip install xalen
-```
+Do **not** install `xalen` expecting the API client shown in this repository. The `xalen` name on PyPI now publishes **XALEN Ephemeris**, the shared astronomical calculation engine. The examples and package metadata in this snapshot predate that change and are not valid installation guidance.
 
-## Quick Start
+The current Xalen client is maintained from Xalen's private product monorepo under the distinct `xalen-sdk` package identity. Public release documentation will be published at [xalen.io/docs](https://xalen.io/docs) when that distribution is available.
 
-```python
-from xalen import XALEN
+## Product boundary
 
-client = XALEN(api_key="xln_live_your_key_here")
+- **Xalen** is the parent company's AI platform.
+- **Vedika** is Xalen Technology's astrology intelligence product and has its own API and SDK namespace.
+- **XALEN Ephemeris** is a shared calculation engine. It is not the Xalen API client.
 
-response = client.chat.completions.create(
-    model="vedika-standard",
-    messages=[
-        {"role": "user", "content": "What is Shakata Yoga?"}
-    ]
-)
-print(response.choices[0].message.content)
-```
+For Vedika integrations, use the official packages listed on the [Vedika GitHub profile](https://github.com/vedika-io).
 
-## Async Usage
+## Status
 
-```python
-from xalen import AsyncXALEN
-
-client = AsyncXALEN()
-
-response = await client.chat.completions.create(
-    model="vedika-fast",
-    messages=[{"role": "user", "content": "Analyze my birth chart"}]
-)
-```
-
-## Environment Variable
-
-Set `XALEN_API_KEY` to avoid passing the key explicitly:
-
-```bash
-export XALEN_API_KEY=xln_live_your_key_here
-```
-
-## API Base URL
-
-Default: `https://api.xalen.io/v1`
-
-## Documentation
-
-Full API docs: [xalen.io/docs](https://xalen.io/docs)
+Historical and unsupported. Issues and pull requests are not accepted here.
 
 ## License
 
